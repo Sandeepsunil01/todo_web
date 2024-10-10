@@ -51,9 +51,9 @@ class HomePageState extends State<HomePage> {
                     },
                   ),
                   selectedIconTheme:
-                      IconThemeData(color: theme.colorScheme.background),
+                      IconThemeData(color: theme.colorScheme.surface),
                   selectedLabelTextStyle:
-                      TextStyle(color: theme.colorScheme.background),
+                      TextStyle(color: theme.colorScheme.surface),
                   onDestinationSelected: (index) =>
                       _tapOnNavigationDestination(context, index),
                   destinations: destination
