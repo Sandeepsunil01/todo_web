@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:todo_app_web/1_domain/entities/unique_id.dart';
 import 'package:todo_app_web/1_domain/repositories/todo_repository.dart';
 import 'package:todo_app_web/1_domain/use_cases/load_entry_ids_for_collection.dart';
-import 'package:todo_app_web/1_domain/use_cases/load_todo_collections.dart';
 import 'package:todo_app_web/2_application/app/pages/details/cubit/details_cubit.dart';
 import 'package:todo_app_web/2_application/app/pages/details/view_states/todo_details_error.dart';
 import 'package:todo_app_web/2_application/app/pages/details/view_states/todo_details_loaded.dart';
