@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:todo_app_web/2_application/app/pages/dashboard/dashboard_page.dart';
+import 'package:todo_app_web/1_domain/entities/unique_id.dart';
+import 'package:todo_app_web/2_application/app/pages/details/todo_details_page.dart';
 import 'package:todo_app_web/2_application/app/pages/home/home_page.dart';
-import 'package:todo_app_web/2_application/app/pages/overview/overview_page.dart';
 import 'package:todo_app_web/2_application/app/pages/settings/settings_page.dart';
 
 final GlobalKey<NavigatorState> _rootNavigator =
@@ -18,16 +18,11 @@ final routes = GoRouter(
   initialLocation: "$_basePath/dashboard",
   observers: [RouteObserver()],
   routes: [
-    // GoRoute(
-    //     path: "$_basePath/dashboard",
-    //     builder: ((context, state) => const DashboardPage())),
-    // GoRoute(
-    //     path: "$_basePath/overview",
-    //     builder: ((context, state) => const OverviewPage())),
     GoRoute(
-        name: SettingsPage.pageConfig.name,
-        path: _basePath,
-        builder: ((context, state) => const SettingsPage())),
+      name: SettingsPage.pageConfig.name,
+      path: _basePath,
+      builder: ((context, state) => const SettingsPage()),
+    ),
     ShellRoute(
       navigatorKey: _shellNavigator,
       builder: (context, state, child) => child,
@@ -43,10 +38,15 @@ final routes = GoRouter(
       ],
     ),
     GoRoute(
-        path: "$_basePath/dashboard",
-        builder: ((context, state) => const DashboardPage())),
-    GoRoute(
-        path: "$_basePath/overview",
-        builder: ((context, state) => const OverviewPage())),
+      name: TodoDetailPage.pageConfig.name,
+      path: '$_basePath/overview/:collections',
+      builder: (context, state) => Scaffold(
+        appBar: AppBar(title: const Text("Details")),
+        body: TodoDetailsPageProvider(
+          collectionId: CollectionId.fromUniqueString(
+              state.pathParameters["collections"] ?? ""),
+        ),
+      ),
+    )
   ],
 );

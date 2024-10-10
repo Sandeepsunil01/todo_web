@@ -44,22 +44,23 @@ class HomePageState extends State<HomePage> {
             Breakpoints.mediumAndUp: SlotLayout.from(
               key: const Key('primary-navigation-medium'),
               builder: (context) => AdaptiveScaffold.standardNavigationRail(
-                  trailing: IconButton(
-                    icon: Icon(SettingsPage.pageConfig.icon),
-                    onPressed: () {
-                      context.pushNamed(SettingsPage.pageConfig.name);
-                    },
-                  ),
-                  selectedIconTheme:
-                      IconThemeData(color: theme.colorScheme.surface),
-                  selectedLabelTextStyle:
-                      TextStyle(color: theme.colorScheme.surface),
-                  onDestinationSelected: (index) =>
-                      _tapOnNavigationDestination(context, index),
-                  destinations: destination
-                      .map((_) => AdaptiveScaffold.toRailDestination(_))
-                      .toList(),
-                  selectedIndex: widget.index),
+                trailing: IconButton(
+                  icon: Icon(SettingsPage.pageConfig.icon),
+                  onPressed: () {
+                    context.pushNamed(SettingsPage.pageConfig.name);
+                  },
+                ),
+                selectedIconTheme:
+                    IconThemeData(color: theme.colorScheme.surface),
+                selectedLabelTextStyle:
+                    TextStyle(color: theme.colorScheme.surface),
+                onDestinationSelected: (index) =>
+                    _tapOnNavigationDestination(context, index),
+                destinations: destination
+                    .map((_) => AdaptiveScaffold.toRailDestination(_))
+                    .toList(),
+                selectedIndex: widget.index,
+              ),
             )
           },
         ),
